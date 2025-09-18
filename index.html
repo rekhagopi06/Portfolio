@@ -1,0 +1,129 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sachin | Welcome</title>
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Body background (grey gradient) */
+    body.landing-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #2e2e2e, #4a4a4a, #1f1f1f);
+      background-size: 400% 400%;
+      animation: bgShift 20s ease infinite;
+      color: #f0f0f0;
+      text-align: center;
+    }
+
+    /* Animated background movement */
+    @keyframes bgShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Fade-in animation */
+    .animate-fade-in {
+      animation: fadeIn 1.5s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Intro box (glass effect) */
+    .intro-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transition: opacity 0.4s ease;
+    }
+
+    /* Name */
+    .intro-box h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-box p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Profile image */
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 1rem 0;
+      border: 3px solid rgba(255,255,255,0.3);
+      object-fit: cover;
+    }
+
+    /* Buttons */
+    .intro-buttons .btn {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: #6b7280; /* grey accent */
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.2s, background 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .intro-buttons .btn:hover {
+      background: #9ca3af;
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body class="landing-body">
+  <div class="intro-box animate-fade-in">
+    <h1>Hi, I’m Rekha</h1>
+    <p>Undergraduate | Web Development Enthusiast | Passionate Learner</p>
+    
+    <div class="intro-buttons">
+      <a href="C:\Users\Toshiba\Downloads\Resume.jpg" target="_blank" class="btn">View Resume</a>
+      <a href="portfolio.html" class="btn">Go to Portfolio</a>
+    </div>
+  </div>
+  <script>
+    // Optional smooth fade-out when clicking links (not for resume)
+    document.querySelectorAll('.intro-buttons a').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const href = btn.getAttribute('href');
+        if (href && !href.includes('pdf')) {
+          e.preventDefault();
+          document.querySelector('.intro-box').style.opacity = '0';
+          setTimeout(() => {
+            window.location.href = href;
+          }, 400); // wait for fade
+        }
+      });
+    });
+  </script>
+</body>
+</html>
